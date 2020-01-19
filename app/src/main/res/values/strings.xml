@@ -6,5 +6,8 @@
     <string name="me">我</string>
     <string name="search_hint">大家正在搜：常在APP</string>
     <string name="care">关注</string>
-    <string name="recomment">推荐</string>
+    <string name="recommend">推荐</string>
+    <string name="like">喜欢</string>
+    <string name="comment">评论</string>
+    <string name="test_text">别不高兴，开心点\n我们在这个世上可是过一天少一天。</string>
 </resources>
