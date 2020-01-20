@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.zolmk.changzai.R;
 
 public class Recommend extends Fragment {
     private Activity parentActivity;
+    private RecyclerView recyclerView;
     private static Recommend mRecommend = null;
 
     @Override
@@ -27,7 +30,8 @@ public class Recommend extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_recommend,container,false);
-
+        init();
+        initView(root);
         return root;
     }
     public static Recommend getInstance(){
@@ -35,5 +39,13 @@ public class Recommend extends Fragment {
     }
     private static class Inner{
         private static final Recommend Recommend = new Recommend();
+    }
+
+    private void init(){
+
+    }
+    private void initView(View root) {
+        recyclerView = root.findViewById(R.id.rv_recommend);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }
