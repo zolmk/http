@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/v_home_place"
         android:layout_width="wrap_content"
         android:layout_height="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,12 +16,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="130dp"
-        android:layout_height="45dp"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toBottomOf="@+id/v_home_place">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/v_card_care"
@@ -38,38 +39,20 @@
                 <TextView
                     android:id="@+id/v_text_care"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/heiti"
                     android:gravity="center_horizontal|bottom"
                     android:text="@string/care"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/v_img_care"
-                    app:layout_constraintEnd_toEndOf="@+id/v_img_care"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/v_img_care"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <ImageView
-                    android:id="@+id/v_img_care"
-                    android:layout_width="40dp"
-                    android:layout_height="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/text_line" />
+                    app:layout_constraintStart_toStartOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="5" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/v_card_recommend"
@@ -87,43 +70,41 @@
                 <TextView
                     android:id="@+id/v_text_recommend"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/heiti"
                     android:gravity="center_horizontal|bottom"
                     android:text="@string/recommend"
                     android:textColor="#555555"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/v_img_recommend"
-                    app:layout_constraintEnd_toEndOf="@+id/v_img_recommend"
-                    app:layout_constraintStart_toStartOf="@+id/v_img_recommend"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/v_img_recommend"
-                    android:layout_width="40dp"
-                    android:layout_height="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/text_line"
-                    tools:visibility="invisible" />
+                    app:layout_constraintStart_toStartOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
+    <com.zolmk.changzai.CustomView.SwitchView
+        android:id="@+id/v_home_switch"
+        android:layout_width="100dp"
+        android:layout_height="4dp"
+        app:switch_count="2"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <include
         android:id="@+id/include2"
         layout="@layout/item_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/v_home_switch" />
 
     <com.zolmk.changzai.ViewPager.ChildViewPager
         android:id="@+id/v_childviewpager"

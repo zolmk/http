@@ -1,6 +1,5 @@
 package com.zolmk.changzai;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -8,9 +7,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.zolmk.changzai.Activity.BaseActivity;
 import com.zolmk.changzai.Adapter.MainPagerAdaper;
 import com.zolmk.changzai.Fragment.Chat;
 import com.zolmk.changzai.Fragment.Find;
@@ -21,7 +20,7 @@ import com.zolmk.changzai.Fragment.Me;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private ViewPager viewPager;
     private TextView tvHome;
     private TextView tvFind;

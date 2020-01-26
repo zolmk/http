@@ -22,18 +22,12 @@ import com.zolmk.changzai.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Care extends Fragment{
-    private Activity parentActivity;
+public class Care extends Fragment {
     private static Care mCare = null;
 
     private RecyclerView recyclerView;
     private CareListAdapter careListAdapter;
 
-    @Override
-    public void onAttach(Context context) {
-        parentActivity = (Activity)context;
-        super.onAttach(context);
-    }
 
     @Nullable
     @Override
@@ -43,6 +37,11 @@ public class Care extends Fragment{
         initView(root);
         return root;
     }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     public static Care getInstance(){
         return Care.Inner.Care;
     }

@@ -13,23 +13,25 @@ import androidx.fragment.app.Fragment;
 
 import com.zolmk.changzai.R;
 
-public class Find extends Fragment {
-    private Activity parentActivity;
+public class Find extends FullFragment{
     private static Find mFind = null;
 
+
     @Override
-    public void onAttach(Context context) {
-        parentActivity = (Activity)context;
-        super.onAttach(context);
+    protected void init() {
+
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_find,container,false);
-
-        return root;
+    public int getPlaceViewId() {
+        return R.id.v_find_place;
     }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_find;
+    }
+
     public static Find getInstance(){
         return Find.Inner.Find;
     }
