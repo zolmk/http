@@ -14,11 +14,10 @@
         <attr name="inner_border_color" format="color" />
         <attr name="mask_color" format="color" />
     </declare-styleable>
-    <declare-styleable name="RoundImageView">
-        <attr name="shape_mode" format="enum">
-            <enum name="round_rect" value="1" />
-            <enum name="circle" value="2" />
-        </attr>
-        <attr name="round_radius" format="dimension" />
+
+    <declare-styleable name="SwitchView">
+        <attr name="switch_count" format="integer"/>
+        <attr name="android:layout_width" format="integer"/>
+        <attr name="android:layout_height" format="integer"/>
     </declare-styleable>
 </resources>

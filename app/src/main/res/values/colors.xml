@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="homeSelectFont">#7db3e0</color>
     <color name="homeUnSelectFont">#555555</color>
+    <color name="trans">#00ffffff</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_home_text_line">#7db3e0</color>
 </resources>

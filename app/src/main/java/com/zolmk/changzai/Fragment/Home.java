@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -20,23 +21,24 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.zolmk.changzai.Adapter.HomePagerAdapter;
+import com.zolmk.changzai.CustomView.SwitchView;
 import com.zolmk.changzai.R;
 import com.zolmk.changzai.ViewPager.ChildViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener, View.OnFocusChangeListener {
+public class Home extends FullFragment implements ViewPager.OnPageChangeListener, View.OnClickListener, View.OnFocusChangeListener{
     private Activity parentActivity;
     private ViewPager parentPager;
     private TextView tv_care;
     private TextView tv_recommend;
-    private ImageView iv_care;
-    private ImageView iv_recommend;
     private CardView cv_care;
     private CardView cv_recommend;
     private ChildViewPager childViewPager;
     private EditText et_search;
+    private SwitchView switchView;
+    private float startX;
     // 默认搜索词
     private String search_text = "大家都在搜：常在APP";
 
@@ -46,12 +48,19 @@ public class Home extends Fragment implements ViewPager.OnPageChangeListener, Vi
         super.onAttach(context);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home,container,false);
-        init(root);
-        return root;
+    protected void init() {
+        init(baseView);
+    }
+
+    @Override
+    public int getPlaceViewId() {
+        return R.id.v_home_place;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_home;
     }
 
     public static Home getInstance(){
@@ -76,13 +85,11 @@ public class Home extends Fragment implements ViewPager.OnPageChangeListener, Vi
         childViewPager.setAdapter(new HomePagerAdapter(getChildFragmentManager(),list));
         childViewPager.setCurrentItem(0);
         childViewPager.addOnPageChangeListener(this);
+
     }
     private void initView(View root){
         tv_care = root.findViewById(R.id.v_text_care);
         tv_recommend = root.findViewById(R.id.v_text_recommend);
-        iv_care = root.findViewById(R.id.v_img_care);
-        iv_recommend = root.findViewById(R.id.v_img_recommend);
-        iv_recommend.setVisibility(View.INVISIBLE);
         tv_care.setTextSize(22);
         tv_recommend.setTextSize(19);
         cv_care = root.findViewById(R.id.v_card_care);
@@ -91,6 +98,9 @@ public class Home extends Fragment implements ViewPager.OnPageChangeListener, Vi
         cv_recommend.setOnClickListener(this);
         et_search = root.findViewById(R.id.v_edit_search);
         et_search.setOnFocusChangeListener(this);
+        switchView = root.findViewById(R.id.v_home_switch);
+
+        childViewPager.addListenSwitchView(switchView);
     }
     public void setParentPager(ViewPager viewPager){
         this.parentPager = viewPager;
@@ -107,16 +117,14 @@ public class Home extends Fragment implements ViewPager.OnPageChangeListener, Vi
             tv_recommend.setTextSize(20);
             tv_care.setTextColor(Color.parseColor("#000000"));
             tv_recommend.setTextColor(Color.parseColor("#555555"));
-            iv_recommend.setVisibility(View.INVISIBLE);
-            iv_care.setVisibility(View.VISIBLE);
         }else{
             tv_recommend.setTextSize(23);
             tv_care.setTextSize(20);
             tv_recommend.setTextColor(Color.parseColor("#000000"));
             tv_care.setTextColor(Color.parseColor("#555555"));
-            iv_care.setVisibility(View.INVISIBLE);
-            iv_recommend.setVisibility(View.VISIBLE);
         }
+        switchView.setCurrentTab(position+1);
+        Log.d("current","currentPage:"+(position+1));
     }
 
     @Override
@@ -125,14 +133,7 @@ public class Home extends Fragment implements ViewPager.OnPageChangeListener, Vi
     }
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.v_card_care:
-                childViewPager.setCurrentItem(0);
-                break;
-            case R.id.v_card_recommend:
-                childViewPager.setCurrentItem(1);
-                break;
-        }
+
     }
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
