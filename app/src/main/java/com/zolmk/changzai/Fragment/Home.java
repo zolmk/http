@@ -124,7 +124,6 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
             tv_care.setTextColor(Color.parseColor("#555555"));
         }
         switchView.setCurrentTab(position+1);
-        Log.d("current","currentPage:"+(position+1));
     }
 
     @Override
@@ -133,7 +132,18 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
     }
     @Override
     public void onClick(View v) {
-
+        switch(v.getId()){
+            case R.id.v_card_care:{
+                if(childViewPager.getCurrentItem()!=0){
+                    childViewPager.setCurrentItem(0);
+                }
+            }break;
+            case R.id.v_card_recommend:{
+                if(childViewPager.getCurrentItem()!=1){
+                    childViewPager.setCurrentItem(1);
+                }
+            }break;
+        }
     }
     @Override
     public void onFocusChange(View v, boolean hasFocus) {

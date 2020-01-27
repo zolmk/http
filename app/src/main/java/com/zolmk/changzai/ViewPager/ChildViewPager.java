@@ -10,6 +10,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.zolmk.changzai.CustomView.SwitchView;
 
+/**
+ * ChildViewPager主要为了防止ChildPager滑动时ParentPager也跟着滑动
+ *
+ */
 public class ChildViewPager extends ViewPager {
     private ViewPager mPager;
     private int abc = 1;
