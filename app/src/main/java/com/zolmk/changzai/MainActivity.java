@@ -30,6 +30,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private CardView cvFind;
     private CardView cvChat;
     private CardView cvMe;
+    private int unSelectedColor;
+    private int selectedColor;
+    private int currentPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +55,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         viewPager.setAdapter(new MainPagerAdaper(this.getSupportFragmentManager(),list));
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(this);
+        unSelectedColor = Color.parseColor("#555555");
+        selectedColor = Color.parseColor("#7db3e0");
+        currentPage = 0;
     }
     private void initView(){
-        tvChat = (TextView) findViewById(R.id.text_chat);
+        tvChat = findViewById(R.id.text_chat);
         tvFind = findViewById(R.id.text_find);
         tvHome = findViewById(R.id.text_home);
         tvMe = findViewById(R.id.text_user);
@@ -74,24 +80,35 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
-        tvMe.setTextColor(Color.parseColor("#555555"));
-        tvHome.setTextColor(Color.parseColor("#555555"));
-        tvFind.setTextColor(Color.parseColor("#555555"));
-        tvChat.setTextColor(Color.parseColor("#555555"));
-        switch (position){
+        switch (currentPage){
             case 0:{
-                tvHome.setTextColor(Color.parseColor("#7db3e0"));
+                tvHome.setTextColor(unSelectedColor);
             }break;
             case 1:{
-                tvFind.setTextColor(Color.parseColor("#7db3e0"));
+                tvFind.setTextColor(unSelectedColor);
             }break;
             case 2:{
-                tvChat.setTextColor(Color.parseColor("#7db3e0"));
+                tvChat.setTextColor(unSelectedColor);
             }break;
             case 3:{
-                tvMe.setTextColor(Color.parseColor("#7db3e0"));
+                tvMe.setTextColor(unSelectedColor);
             }break;
         }
+        switch (position){
+            case 0:{
+                tvHome.setTextColor(selectedColor);
+            }break;
+            case 1:{
+                tvFind.setTextColor(selectedColor);
+            }break;
+            case 2:{
+                tvChat.setTextColor(selectedColor);
+            }break;
+            case 3:{
+                tvMe.setTextColor(selectedColor);
+            }break;
+        }
+        currentPage = position;
     }
 
     @Override

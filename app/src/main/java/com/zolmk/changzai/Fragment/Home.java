@@ -28,7 +28,7 @@ import com.zolmk.changzai.ViewPager.ChildViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends FullFragment implements ViewPager.OnPageChangeListener, View.OnClickListener, View.OnFocusChangeListener{
+public class Home extends FullFragment implements ViewPager.OnPageChangeListener, View.OnClickListener{
     private Activity parentActivity;
     private ViewPager parentPager;
     private TextView tv_care;
@@ -36,11 +36,9 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
     private CardView cv_care;
     private CardView cv_recommend;
     private ChildViewPager childViewPager;
-    private EditText et_search;
     private SwitchView switchView;
-    private float startX;
-    // 默认搜索词
-    private String search_text = "大家都在搜：常在APP";
+    private int selectedColor = Color.parseColor("#000000");
+    private int unSelectedColor = Color.parseColor("#555555");
 
     @Override
     public void onAttach(Context context) {
@@ -96,8 +94,6 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
         cv_care.setOnClickListener(this);
         cv_recommend = root.findViewById(R.id.v_card_recommend);
         cv_recommend.setOnClickListener(this);
-        et_search = root.findViewById(R.id.v_edit_search);
-        et_search.setOnFocusChangeListener(this);
         switchView = root.findViewById(R.id.v_home_switch);
 
         childViewPager.addListenSwitchView(switchView);
@@ -115,13 +111,13 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
         if(position==0){
             tv_care.setTextSize(23);
             tv_recommend.setTextSize(20);
-            tv_care.setTextColor(Color.parseColor("#000000"));
-            tv_recommend.setTextColor(Color.parseColor("#555555"));
+            tv_care.setTextColor(selectedColor);
+            tv_recommend.setTextColor(unSelectedColor);
         }else{
             tv_recommend.setTextSize(23);
             tv_care.setTextSize(20);
-            tv_recommend.setTextColor(Color.parseColor("#000000"));
-            tv_care.setTextColor(Color.parseColor("#555555"));
+            tv_recommend.setTextColor(selectedColor);
+            tv_care.setTextColor(unSelectedColor);
         }
         switchView.setCurrentTab(position+1);
     }
@@ -145,10 +141,5 @@ public class Home extends FullFragment implements ViewPager.OnPageChangeListener
             }break;
         }
     }
-    @Override
-    public void onFocusChange(View v, boolean hasFocus) {
-        if(!hasFocus){
-            et_search.setText(search_text);
-        }
-    }
+
 }

@@ -42,6 +42,9 @@ public class CareListAdapter extends RecyclerView.Adapter<CareListAdapter.MyTVHo
         View view = null;
         // 根据type不同所显示view也不同
         switch (viewType){
+            case -1:{
+                view = mLayoutInflater.inflate(R.layout.item_search,parent,false);
+            }break;
             case 0:{
                 view = mLayoutInflater.inflate(R.layout.item_think_zero,parent,false);
             }break;
@@ -71,6 +74,7 @@ public class CareListAdapter extends RecyclerView.Adapter<CareListAdapter.MyTVHo
 
     @Override
     public int getItemViewType(int position) {
+        if(position==0) return -1;
         return mData.get(position).getImgNumber();
     }
 
