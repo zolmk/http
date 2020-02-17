@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <declare-styleable name="SwitchView">
-        <attr name="switch_count" format="integer"/>
-        <attr name="android:layout_width" format="integer"/>
-        <attr name="android:layout_height" format="integer"/>
-    </declare-styleable>
-</resources>

@@ -3,13 +3,4 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="homeSelectFont">#7db3e0</color>
-    <color name="homeUnSelectFont">#555555</color>
-    <color name="trans">#00FFFFFF</color>
-    <color name="color_eeeeee">#eeeeee</color>
-    <color name="me_divider">#edeff2</color>
-    <color name="color_home_text_line">#7db3e0</color>
-    <color name="color_vip_text">#e3ce5e</color>
-    <color name="reveal_color">#50EEEEEE</color>
-    <color name="white">#ffffff</color>
 </resources>
