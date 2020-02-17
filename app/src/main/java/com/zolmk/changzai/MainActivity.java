@@ -9,12 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.zolmk.changzai.Activity.BaseActivity;
-import com.zolmk.changzai.Adapter.MainPagerAdaper;
-import com.zolmk.changzai.Fragment.Chat;
-import com.zolmk.changzai.Fragment.Find;
-import com.zolmk.changzai.Fragment.Home;
-import com.zolmk.changzai.Fragment.Me;
+import com.zolmk.changzai.activity.BaseActivity;
+import com.zolmk.changzai.adapter.MainPagerAdaper;
+import com.zolmk.changzai.fragment.Chat;
+import com.zolmk.changzai.fragment.Find;
+import com.zolmk.changzai.fragment.Home;
+import com.zolmk.changzai.fragment.Me;
 
 
 import java.util.ArrayList;
@@ -26,21 +26,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private TextView tvFind;
     private TextView tvChat;
     private TextView tvMe;
-    private CardView cvHome;
-    private CardView cvFind;
-    private CardView cvChat;
-    private CardView cvMe;
     private int unSelectedColor;
     private int selectedColor;
     private int currentPage;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        init();
-        initView();
-    }
-    private void init(){
+    protected void init(){
         viewPager = (ViewPager)findViewById(R.id.v_parentViewPager);
         Home home = Home.getInstance();
         home.setParentPager(this.viewPager);
@@ -59,20 +49,24 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         selectedColor = Color.parseColor("#7db3e0");
         currentPage = 0;
     }
-    private void initView(){
+    @Override
+    protected void initView(){
         tvChat = findViewById(R.id.text_chat);
         tvFind = findViewById(R.id.text_find);
         tvHome = findViewById(R.id.text_home);
         tvMe = findViewById(R.id.text_user);
-        cvChat = findViewById(R.id.v_chat);
-        cvChat.setOnClickListener(this);
-        cvFind = findViewById(R.id.v_find);
-        cvFind.setOnClickListener(this);
-        cvHome = findViewById(R.id.v_home);
-        cvHome.setOnClickListener(this);
-        cvMe = findViewById(R.id.v_user);
-        cvMe.setOnClickListener(this);
+        findViewById(R.id.v_chat).setOnClickListener(this);
+        findViewById(R.id.v_find).setOnClickListener(this);
+        findViewById(R.id.v_home).setOnClickListener(this);
+        findViewById(R.id.v_user).setOnClickListener(this);
+
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

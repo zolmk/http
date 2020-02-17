@@ -87,16 +87,16 @@
 
     </LinearLayout>
 
-    <com.zolmk.changzai.CustomView.SwitchView
+    <com.zolmk.changzai.customView.SwitchView
         android:id="@+id/v_home_switch"
         android:layout_width="100dp"
         android:layout_height="4dp"
-        app:switch_count="2"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:switch_count="2" />
 
-    <com.zolmk.changzai.ViewPager.ChildViewPager
+    <com.zolmk.changzai.viewPager.ChildViewPager
         android:id="@+id/v_childviewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -105,6 +105,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_home_switch">
 
-    </com.zolmk.changzai.ViewPager.ChildViewPager>
+    </com.zolmk.changzai.viewPager.ChildViewPager>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

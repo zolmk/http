@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:listDivider">@drawable/me_divider</item>
     </style>
     <style name="login_edit">
         <item name="android:background">@drawable/login_edit_seletor</item>
